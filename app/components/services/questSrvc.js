@@ -12,4 +12,25 @@ angular.module('triviaApp').service('questSrvc', function( $http, $q ) {
         }
         )
     }
+
+    this.updateQuestion = function(body){
+        let id = body._id;
+        return $http.put(`https://practiceapi.devmountain.com/api/trivia/questions/${id}`, body).then(results=>{
+            return results;
+        })
+    }
+
+    this.addQuestion = function(body){
+        return $http.post(`https://practiceapi.devmountain.com/api/trivia/questions`, body).then(results=>{
+            return results;
+        })
+    }
+
+    this.deleteQuestion = function(id){
+        console.log("harpy", id)
+        return $http.delete(`https://practiceapi.devmountain.com/api/trivia/questions/${id}`).then(results=>{
+            return results;
+        })
+    }
+
   })

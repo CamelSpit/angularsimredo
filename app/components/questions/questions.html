@@ -1,10 +1,10 @@
 <div>
       <div>
-        <div ng-repeat="question in questCtrl.questions" class="card"> 
+        <div ng-repeat="question in questCtrl.questions" class="card" ng-class='class' ng-controller="hackCtrl"> 
             <div class='header'>
               <span class='question'>{{question.question}}</span>
               <div class='blerg'>
-                <div class='gear'><img src="styles/assets/gear.svg"/></div>
+                <div class='gear' ng-click="open('gear')"><img src="styles/assets/gear.svg"/></div>
                 <div class='difficulty'>
                   <span ng-if="question.difficulty==1" class="easy">Easy</span>
                   <span ng-if="question.difficulty==2" class="medium">Medium</span>
@@ -13,10 +13,54 @@
               </div>
             </div>
             <div class='answers'>
-              <div>{{question.options['1']}}</div>
-              <div>{{question.options['2']}}</div>
-              <div>{{question.options['3']}}</div>
-              <div>{{question.options['4']}}</div>              
+              <button ng-click="answer(1, question.correct_answer)">{{question.options['1']}}</button>
+              <button ng-click="answer(2, question.correct_answer)">{{question.options['2']}}</button>
+              <button ng-click="answer(3, question.correct_answer)">{{question.options['3']}}</button>
+              <button ng-click="answer(4, question.correct_answer)">{{question.options['4']}}</button>             
+            </div>
+
+            <!-- modal -->
+            <div class="modal" ng-show="openGear">
+              <form>
+                <h4 class="close">X</h4>
+                <span>Question</span><input type="text" ng-model="question.question">
+                <!-- question was changed -->
+          
+                <span>Animal it's about</span><input type="text" ng-model="question.animal">
+                <!-- animal -->
+                <span>Difficulty</span>
+                <div class="range">
+                  <input type="range" min="1" max="3" ng-model="question.difficulty">
+          <!-- difficulty -->
+                  <h5>{{newQuestion.difficulty}}</h5>
+                </div>
+                <h4>Options</h4>
+                <div>
+                  <input type="radio" ng-model="question.correct_answer" value="1">
+                  <input type="text" ng-model="question.options['1']">
+                </div>
+                <div>
+                  <input type="radio" ng-model="question.correct_answer" value="2">
+                  <input type="text" ng-model="question.options['2']">
+                </div>
+                <div>
+                  <input type="radio" ng-model="question.correct_answer" value="3">
+                  <input type="text" ng-model="question.options['3']">
+                </div>
+                <div>
+                  <input type="radio" ng-model="question.correct_answer" value="4">
+                  <input type="text" ng-model="question.options['4']">
+                </div>
+          
+                <!--Add question buttons-->
+                <div class="buttons" ng-show="openGear">
+                    <button class="red" ng-click="questCtrl.delete(question); open('gear')">Delete Question</button>
+                  <button class="green" ng-click="questCtrl.update(question); open('gear')">Save Question</button>
+                  <button ng-click="open('gear')">Cancel</button>
+                </div>
+                </div>
+          
+              </form>
             </div>
         </div>
       </div>

@@ -15,7 +15,8 @@
   <header>
     <div></div>
     <h1>Trivia Trends</h1>
-    <button ng-click="open()"><span>+</span> Add Question</button>
+    <!-- {{ openGear }} -->
+    <button ng-click="open('add')"><span>+</span> Add Question</button>
   </header>
   <article>
     <nav>
@@ -38,46 +39,39 @@
   <div class="modal" ng-show="showModal">
     <form>
       <h4 class="close">X</h4>
-      <span>Question</span><input type="text" ng-model="question">
+      <span>Question</span><input type="text" ng-model="nuquestion.question">
       <!-- question was changed -->
 
-      <span>Animal it's about</span><input type="text" ng-model="animal">
+      <span>Animal it's about</span><input type="text" ng-model="nuquestion.animal">
       <!-- animal -->
       <span>Difficulty</span>
       <div class="range">
-        <input type="range" min="1" max="3" ng-model="difficult">
+        <input type="range" min="1" max="3" ng-model="nuquestion.difficulty">
 <!-- difficulty -->
         <h5>{{newQuestion.difficulty}}</h5>
       </div>
       <h4>Options</h4>
       <div>
-        <input type="radio" ng-model="" value="1">
-        <input type="text" ng-model="">
+        <input type="radio" ng-model="nuquestion.correct_answer" value="1">
+        <input type="text" ng-model="nuquestion.options['1']">
       </div>
       <div>
-        <input type="radio" ng-model="" value="2">
-        <input type="text" ng-model="">
+        <input type="radio" ng-model="nuquestion.correct_answer" value="2">
+        <input type="text" ng-model="nuquestion.options['2']">
       </div>
       <div>
-        <input type="radio" ng-model="" value="3">
-        <input type="text" ng-model="">
+        <input type="radio" ng-model="nuquestion.correct_answer" value="3">
+        <input type="text" ng-model="nuquestion.options['3']">
       </div>
       <div>
-        <input type="radio" ng-model="" value="4">
-        <input type="text" ng-model="">
-      </div>
-
-      <!--Add question buttons-->
-      <div class="buttons">
-        <button class="green">Save Question</button>
-        <button>Cancel</button>
+        <input type="radio" ng-model="nuquestion.correct_answer" value="4">
+        <input type="text" ng-model="nuquestion.options['4']">
       </div>
 
       <!--Edit & Delete question buttons-->
-      <div class="buttons">
-        <button class="red">Delete Question</button>
-        <button class="green">Save Changes</button>
-        <button>Cancel</button>
+      <div class="buttons" ng-show="showModal">
+        <button class="green" ng-click="add(nuquestion)">Save Changes</button>
+        <button ng-click="open('add')">Cancel</button>
       </div>
 
     </form>
@@ -91,6 +85,8 @@
   <script src="app/components/questions/questions.js"></script>
   <script src="app/components/services/questSrvc.js"></script>
   <script src="app/components/controllers/main.js"></script>
+  <script src="app/components/controllers/hackCtrl.js"></script>
+  
   
   
 </body>

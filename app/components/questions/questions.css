@@ -64,3 +64,19 @@
     height: 50%;
     width: 50%;
 }
+
+.answers button{
+    background: transparent;
+    width: 47%;
+    height: 50%;
+    border: none;
+    text-align: left;
+}
+
+.correct{
+    background: green;
+}
+
+.incorrect{
+    background: red;
+}
