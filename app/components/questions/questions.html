@@ -1,7 +1,23 @@
 <div>
       <div>
-        <div ng-repeat="question in questCtrl.questions"> 
-            {{question}}
+        <div ng-repeat="question in questCtrl.questions" class="card"> 
+            <div class='header'>
+              <span class='question'>{{question.question}}</span>
+              <div class='blerg'>
+                <div class='gear'><img src="styles/assets/gear.svg"/></div>
+                <div class='difficulty'>
+                  <span ng-if="question.difficulty==1" class="easy">Easy</span>
+                  <span ng-if="question.difficulty==2" class="medium">Medium</span>
+                  <span ng-if="question.difficulty==3" class='hard'>Hard</span>
+                </div>
+              </div>
+            </div>
+            <div class='answers'>
+              <div>{{question.options['1']}}</div>
+              <div>{{question.options['2']}}</div>
+              <div>{{question.options['3']}}</div>
+              <div>{{question.options['4']}}</div>              
+            </div>
         </div>
       </div>
   </div>

@@ -103,7 +103,7 @@ article {
   padding: 3px;
   border-radius: 2px;
 }
-div.gear {
+/* div.gear {
   height: 1.5rem;
   padding: 0;
   margin-right: .25rem;
@@ -116,7 +116,7 @@ div.gear:hover {
 }
 .gear img {
   height: 100%;
-}
+} */
 .question-wrapper ul {
   clear: both;
   display: flex;
