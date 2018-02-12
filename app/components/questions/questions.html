@@ -1,8 +1,9 @@
 <div>
       <div>
-        <div ng-repeat="question in questCtrl.questions" class="card" ng-class='class' ng-controller="hackCtrl"> 
+        <div ng-repeat="question in questCtrl.questions | filter: filter" class="card" ng-class='class' ng-controller="hackCtrl"> 
             <div class='header'>
               <span class='question'>{{question.question}}</span>
+          {{filter}}              
               <div class='blerg'>
                 <div class='gear' ng-click="open('gear')"><img src="styles/assets/gear.svg"/></div>
                 <div class='difficulty'>

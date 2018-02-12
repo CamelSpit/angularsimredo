@@ -15,4 +15,10 @@ angular.module('triviaApp').controller('main',function($scope, $rootScope, quest
         questSrvc.addQuestion(body);
         $scope.showModal = !$scope.showModal;
     }
+
+    $scope.filter = function(property, string){
+        $rootScope.filter = {[property] : string};
+        console.log("my basket of eels", $rootScope.filter)
+    }
+        
   })

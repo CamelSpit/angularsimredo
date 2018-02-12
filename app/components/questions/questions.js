@@ -1,7 +1,12 @@
 angular.module('triviaApp').component('questions', {
     templateUrl: 'app/components/questions/questions.html',
     controllerAs: 'questCtrl',
-    controller: function (questSrvc, $scope){
+    controller: function (questSrvc, $scope, $rootScope){
+        // $scope.filter = $rootScope.filter;
+        setTimeout(function() {
+            console.log('rootscope', $rootScope.filter)
+            $scope.filter = $rootScope.filter;
+        }, 5000)
         var flag;
         if(!flag) {
             questSrvc.getQuestions().then(res => {
